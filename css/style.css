@@ -1,0 +1,4 @@
+* {
+  box-sizing: border-box;
+  /* includes padding and border in total width to all elements in html using "*" */
+}
