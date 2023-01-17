@@ -1,4 +1,59 @@
 * {
   box-sizing: border-box;
-  /* includes padding and border in total width to all elements in html using "*" */
+  margin: 0;
+}
+
+body {
+  font-family: "Open Sans";
+  font-weight: 400;
+  padding: 100px 164px;
+  color: #373a3c;
+}
+
+.title {
+  font-size: 72px;
+  line-height: 79px;
+}
+
+.fib-calc {
+  height: 200px;
+  width: 100%;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: row;
+}
+
+.the-fib-of {
+  font-size: 24px;
+  line-height: 38px;
+  margin-right: 14px;
+}
+
+.button {
+  width: 39px;
+  height: 38px;
+  background: #0275d8;
+  border: 1px solid #0275d8;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 21px;
+  color: #ffffff;
+}
+
+.user-input {
+  width: 86px;
+  height: 38px;
+  margin-right: 14px;
+  font-size: 24px;
+  color: #373a3c;
+  padding: 7px;
+}
+
+.fib-result {
+  font-weight: 700;
+  font-size: 24px;
+  text-decoration-line: underline;
+  width: 50px;
+  height: 38px;
+  padding-left: 14px;
 }

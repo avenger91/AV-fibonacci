@@ -1,7 +1,3 @@
-/*solution: mileston 1/2: 
-
-*/
-
 const button = document.getElementById("button");
 button.addEventListener("click", function () {
   let input = document.getElementById("user-input").value;
@@ -22,7 +18,7 @@ function fibonacci(input) {
 }
 
 /*
-
+solution: milestone 3.1
 
 function fib(x) {
   if (x < 2) {
@@ -30,11 +26,5 @@ function fib(x) {
   }
   return fib(x - 1) + fib(x - 2);
 }
-console.log(fib(9)); // returns 34
-
-/*
-
-          fib: 0 1 1 2 3 5 8 13 21 34 
-  f(n) value:  0 1 2 3 4 5 6  7  8  9 
   
 */
