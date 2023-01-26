@@ -1,5 +1,4 @@
-const button = document.getElementById("button");
-button.addEventListener("click", function () {
+/*button.addEventListener("click", function () {
   let input = document.getElementById("user-input").value;
   input = Number(input);
   const result = document.getElementById("result");
@@ -18,13 +17,13 @@ function fibonacci(input) {
 }
 
 /*
-solution: milestone 3.1
 
+solution: milestone 3.1:
 function fib(x) {
   if (x < 2) {
     return x;
   }
   return fib(x - 1) + fib(x - 2);
 }
-  
+
 */
