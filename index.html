@@ -14,12 +14,16 @@
   <body>
     <p class="title">Fibonacci Calculator</p>
     <form id="calculator" class="fib-calc">
-      <label for="fib-input" class="the-fib-of">The Fibonnaci Of</label>
+      <label for="fib-input" class="the-fib-of">The Fibonacci Of</label>
       <input type="number" id="user-input" placeholder="#" class="user-input" />
       <button type="button" class="button" id="button">Is</button>
-      <!-- <div class="loader" id="loader"></div>-->
+      <div class="loader" id="loader"></div>
+      <div class="server-error"></div>
       <p class="fib-result" id="result"></p>
     </form>
+    <div class="error-wrapper">
+      <div class="error-message">Can't be larger than 50</div>
+    </div>
     <script src="./js/server.js"></script>
   </body>
 </html>
