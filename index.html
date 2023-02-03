@@ -17,12 +17,19 @@
       <label for="fib-input" class="the-fib-of">The Fibonacci Of</label>
       <input type="number" id="user-input" placeholder="#" class="user-input" />
       <button type="button" class="button" id="button">Is</button>
-      <div class="loader" id="loader"></div>
+      <div id="loader"></div>
       <div class="server-error"></div>
       <p class="fib-result" id="result"></p>
     </form>
     <div class="error-wrapper">
       <div class="error-message">Can't be larger than 50</div>
+    </div>
+    <div>
+      <div class="result-wrapper">
+        <div class="result-header">Results</div>
+        <div class="result-loader"></div>
+      </div>
+      <ul></ul>
     </div>
     <script src="./js/server.js"></script>
   </body>

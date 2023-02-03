@@ -1,41 +1,17 @@
-function displayError() {
-  const input = document.getElementById("user-input").value;
-  const errorMessage = document.querySelector(".error-message");
-
-  if (input > 50) {
-    errorMessage.style.display = "block";
-  } else {
-    errorMessage.style.display = "none";
-  }
-}
-
-function serverError() {
+function Fibonacci() {
   const input = document.getElementById("user-input").value;
   const serverError = document.querySelector(".server-error");
+  const errorMessage = document.querySelector(".error-message");
 
-  if (input == 42) {
-    serverError.style.display = "block";
-  } else {
-    serverError.style.display = "none";
-  }
-}
+  document.querySelector(".fib-result").innerHTML = "";
+  errorMessage.style.display = "none";
+  serverError.style.display = "none";
 
-function displayLoader() {
-  const input = document.getElementById("user-input").value;
-  const loader = document.querySelector(".loader");
+  document.getElementById("loader").classList.add("loader");
 
-  if (input < 50 && input != 42) {
-    loader.style.display = "block";
-  } else {
-    loader.style.display = "none";
-  }
-  displayError();
-}
+  setTimeout(getFetch, 1 * 1000);
 
-function getFibonacci() {
-  const input = document.getElementById("user-input").value;
-
-  if (input < 50) {
+  function getFetch() {
     fetch(`http://localhost:5050/fibonacci/${input}`)
       .then(function (response) {
         if (response.status == 400) {
@@ -47,11 +23,70 @@ function getFibonacci() {
         return response.json();
       })
       .then(function (json) {
-        console.log(json.result);
+        document.getElementById("loader").classList.remove("loader");
+
+        if (input < 50 && input != 42) {
+          document.querySelector(".fib-result").innerHTML = json.result;
+        } else if (input == 42) {
+          serverError.style.display = "block";
+        } else {
+          errorMessage.style.display = "block";
+        }
       });
   }
-  serverError();
+  setTimeout(displayHeader, 2 * 1000);
+  setTimeout(displayFibonacci, 3.5 * 1000);
 }
 
-button.addEventListener("click", displayLoader);
-button.addEventListener("click", getFibonacci);
+function displayHeader() {
+  const resultHeader = document.querySelector(".result-wrapper");
+  resultHeader.style.display = "flex";
+  const input = document.getElementById("user-input").value;
+
+  if (input < 50 && input != 42) {
+    document.querySelector(".result-loader").classList.add("loader");
+  } else {
+    document.querySelector(".result-loader").classList.remove("loader");
+  }
+}
+
+function displayFibonacci() {
+  document.querySelector(".result-loader").classList.remove("loader");
+
+  fetch("http://localhost:5050/getFibonacciResults")
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      for (const result of data.results) {
+        const myList = document.querySelector("ul");
+        const listItem = document.createElement("li");
+
+        const numberElement = document.createElement("strong");
+        const resultElement = document.createElement("strong");
+        const dateElement = document.createElement("span");
+
+        numberElement.textContent = result.number;
+        resultElement.textContent = result.result;
+        dateElement.textContent = result.createdDate;
+
+        result.createdDate = new Date();
+
+        listItem.append(
+          "The Fibonnaci Of ",
+          numberElement,
+          " is ",
+          resultElement,
+          ". Calculated at: ",
+          `${result.createdDate}`
+        );
+        myList.appendChild(listItem);
+
+        const lineElement = document.createElement("hr");
+        lineElement.className = "line-break";
+        listItem.appendChild(lineElement);
+      }
+    });
+}
+
+button.addEventListener("click", Fibonacci);
